@@ -8,7 +8,7 @@ export class CuentaAhorros extends Cuenta {
         this._cuentaActiva = saldoInicial >= 10000;
     }
 
-    consignar(cantidad: number): void {
+    consignar(cantidad: number){
         if (this._cuentaActiva) {
             super.consignar(cantidad);
             this._cuentaActiva = this._saldo >= 10000;
@@ -17,7 +17,7 @@ export class CuentaAhorros extends Cuenta {
         }
     }
 
-    retirar(cantidad: number): void {
+    retirar(cantidad: number) {
         if (this._cuentaActiva) {
             super.retirar(cantidad);
             this._cuentaActiva = this._saldo >= 10000;
@@ -26,7 +26,7 @@ export class CuentaAhorros extends Cuenta {
         }
     }
 
-    extractoMensual(): void {
+    extractoMensual() {
         if (this._numRetiros > 4) {
             this._comisionMensual += (this._numRetiros - 4) * 1000;
         }
@@ -38,14 +38,11 @@ export class CuentaAhorros extends Cuenta {
         return this._cuentaActiva;
     }
 
-    imprimir(): void {
+    imprimir() {
         console.log(`Saldo: $${this._saldo.toFixed(2)}`);
         console.log(`Comisión Mensual: $${this._comisionMensual.toFixed(2)}`);
         console.log(`Número de transacciones realizadas: ${this._numConsignaciones + this._numRetiros}`);
     }
 }
 
-// Función externa de comprobación
-export function comprobarEstadoCuenta(cuenta: CuentaAhorros): void {
-    console.log(`La cuenta de ahorros está ${cuenta.cuentaActiva ? 'activa' : 'inactiva'}`);
-}
+

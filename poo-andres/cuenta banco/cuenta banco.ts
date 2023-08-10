@@ -13,12 +13,12 @@ export class Cuenta {
         this._comisionMensual = 0;
     }
 
-    consignar(cantidad: number): void {
+    consignar(cantidad: number) {
         this._saldo += cantidad;
         this._numConsignaciones++;
     }
 
-    retirar(cantidad: number): void {
+    retirar(cantidad: number) {
         if (cantidad <= this._saldo) {
             this._saldo -= cantidad;
             this._numRetiros++;
@@ -27,12 +27,12 @@ export class Cuenta {
         }
     }
 
-    calcularInteresMensual(): void {
+    calcularInteresMensual() {
         const interesMensual = (this._tasaAnual / 12) / 100 * this._saldo;
         this._saldo += interesMensual;
     }
 
-    extractoMensual(): void {
+    extractoMensual() {
         this._saldo -= this._comisionMensual;
         this.calcularInteresMensual();
     }
