@@ -21,7 +21,10 @@ export class CuentaAhorros extends Cuenta {
         if (this._cuentaActiva) {
             super.retirar(cantidad);
             this._cuentaActiva = this._saldo >= 10000;
-        } else {
+            console.log("el retiro fue exitoso ")
+            
+        } 
+        else {
             console.log("La cuenta de ahorros está inactiva.");
         }
     }
